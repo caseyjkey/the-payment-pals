@@ -5,6 +5,8 @@ import drizzleOptions from "./drizzleOptions";
 import MyComponent from "./MyComponent";
 import "./App.css";
 
+// For info on how drizzle works including drizzleContext
+// visit https://www.npmjs.com/package/@umaprotocol/react-plugin
 const drizzle = new Drizzle(drizzleOptions);
 
 const App = () => {

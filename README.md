@@ -14,6 +14,8 @@ Node v10.16.3
 Web3.js v1.2.1
 ```
 ## Getting Started
+0. Install node modules, i.e. OpenZeppelin
+`npm install`
 1. Run the development console
 `truffle develop`
 2. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with `truffle`.
@@ -21,10 +23,11 @@ Web3.js v1.2.1
 compile
 migrate
 ```
-3. In the `app` directory, we run the React app. Smart contract changes must be recompiled and migrated.
+3. In the `app` directory, we install the node modules, then  run the React app. Smart contract changes must be recompiled and migrated.
 ```
 // in another terminal (i.e. not in the truffle development prompt)
 cd app
+npm install
 npm run start
 ```
 4. Truffle can run tests written in Solidity or JavaScript against your smart contracts. Note the command varies slightly if you're in or outside of the development console.
