@@ -1,6 +1,7 @@
 # The Payment Pals
 This project is bootstrapped from the drizzle Truffle box, so it includes everything we need to start using smart countracts from a react app.
 ## Prerequisites
+### Software Dependencies
 * Node.js
 Required to install packages such as Truffle and React.
 * Truffle
@@ -13,6 +14,21 @@ Solidity v0.5.16 (solc-js)
 Node v10.16.3
 Web3.js v1.2.1
 ```
+
+### Shared Ethereum Wallet
+For this project we will be testing on Rinkeby.
+We can all import this account and use it for any transactions. 
+This account has a couple Ether too.
+
+Here is the private key:
+`7F24F4AE7841AEA37CB090508227CA6B0B8BFA0F88DB220E9609302D459B977A`
+
+Import it by:
+1. Click Metamask
+2. Select Rinkeby Test Network
+3. Click the user account circle in top-right of Metamask
+4. Click import account and paste private key from above
+
 ## Getting Started
 0. Install node modules, i.e. OpenZeppelin
 `npm install`
