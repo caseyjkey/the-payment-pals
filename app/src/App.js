@@ -2,7 +2,7 @@ import React from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import { Drizzle } from "@drizzle/store";
 import drizzleOptions from "./drizzleOptions";
-import MyComponent from "./MyComponent";
+import PaymentPals from "./PaymentPals";
 import "./App.css";
 
 // For info on how drizzle works including drizzleContext
@@ -20,8 +20,8 @@ const App = () => {
             return "Loading..."
           }
 
-          return (
-            <MyComponent drizzle={drizzle} drizzleState={drizzleState} />
+            return (
+                <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
           )
         }}
       </DrizzleContext.Consumer>
