@@ -6,7 +6,7 @@ export default () => {
 
   const drizzleContext = useContext(DrizzleContext.Context);
   const [dataKey, setDataKey] = useState(null);
-  const [group, setGroup] = useState(null);
+  const [groups, setGroups] = useState(null);
   const account = drizzleContext.drizzleState.accounts[0]; 
 
   const web3 = drizzleContext.drizzle.web3;
@@ -14,7 +14,7 @@ export default () => {
   useEffect(() => {
     if (drizzleContext.initialized) {
       const contract = drizzleContext.drizzle.contracts.ComplexStorage;
-      const dataKey = contract.methods["userToGroup"].cacheCall(account);
+      const dataKey = contract.methods["userToGroups"].cacheCall(account, 0);
       setDataKey(dataKey);
       console.log(dataKey);
     }
@@ -24,16 +24,14 @@ export default () => {
     if (dataKey) {
       const ContractStore = drizzleContext.drizzleState.contracts.ComplexStorage;
       // Use the saved 'dataKey' to get the return value from earlier.
-      setGroup(ContractStore.userToGroup[dataKey].value)
-      console.log(ContractStore.userToGroup);
-      console.log(group);
+      setGroups(ContractStore.userToGroups[dataKey].value)
     }
   }, [drizzleContext.drizzleState]);
 
-
+  
   return (
     <div className="navbar">
-        <h2>{account}'s Group: {group && group.name}</h2>
+        <h2>{account}'s Group: {groups && groups.name}</h2>
     </div>
   );
 };
