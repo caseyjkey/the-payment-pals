@@ -24,7 +24,6 @@ const App = () => {
             return (
               <div>
                 <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
-                <MyComponent drizzle={drizzle} drizzleState={drizzleState} />
               </div>
           )
         }}
