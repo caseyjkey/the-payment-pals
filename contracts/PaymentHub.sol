@@ -1,15 +1,17 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 contract PaymentHub {
+
     // Mapping for finding a user's groups
     mapping (address => Group[]) public userToGroups;
+    mapping (address => int256) public userToBalance;
     Group[] public userGroups;
 
     Group[] groups; // The contract stores all groups, serves as a hub. Various groups will not interact with each other
 
     struct Member {
         string name;
-        uint256 balance;
+        int balance;
         address addy;
     }
 
@@ -59,6 +61,11 @@ contract PaymentHub {
 
     function addFriend(address _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
+    }
+
+    function payFriend(address _friend, int _amt) public payable {
+        userToBalance[msg.sender] -= _amt;
+        userToBalance[_friend] += _amt;
     }
 
 }
