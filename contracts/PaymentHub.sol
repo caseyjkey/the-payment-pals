@@ -41,6 +41,8 @@ contract PaymentHub {
         groups[groupID].friends.push(msg.sender); // Add the first member, which is the creator
         groups[groupID].id = groupID;
 
+        userToGroups[msg.sender].push(groups[groupID]);
+
         return groupID;
     }
 
@@ -63,9 +65,13 @@ contract PaymentHub {
         groups[_groupID].friends.push(_newFriend);
     }
 
-    function payFriend(address _friend, int _amt) public payable {
+    function payFriend(address _friend, int _amt) public {
         userToBalance[msg.sender] -= _amt;
         userToBalance[_friend] += _amt;
+    }
+
+    function getNumUserGroups(address _add) public view returns (uint){
+        return userToGroups[_add].length;
     }
 
 }
