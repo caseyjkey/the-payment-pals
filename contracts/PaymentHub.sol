@@ -1,8 +1,10 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 contract PaymentHub {
-
+    // Mapping for finding a user's groups
     mapping (address => Group[]) public userToGroups;
+    Group[] public userGroups;
+    
     Group[] groups; // The contract stores all groups, serves as a hub. Various groups will not interact with each other
 
     struct Member {
@@ -18,23 +20,15 @@ contract PaymentHub {
     }
 
     constructor() public {
-        // Change this to be the first address in your truffle development environment
+        // Change address1 to be the first address in your truffle development environment
         address address1 = 0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;
-        address address2 = 0x6EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;
-        address address3 = 0x7EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;
 
-        // Can't have dynamic in-memory arrays
-        Member[] friends = new Member[](10);
-        friends.push(Member("Casey", 20, address1));
-        groupArray.push(Group("Pay Pals", friends, 0));
+        Group memory group = Group("Pay Pals", new Member[](0), 0);
+        groups.push(group);
+        groups[groups.length-1].friends.push(Member("Casey", 20, address1));
+        userGroups.push(groups[groups.length-1]);
 
-        friends = new Member[](10);
-        friends.push(Member("Casey", 20, address1));
-        friends.push(Member("Adam", 30, address2));
-        friends.push(Member("Brian", 50, address3));
-        groupArray.push(Group("Green Team", friends, 1));
-        
-        userToGroups[address1] = groupArray;
+        userToGroups[address1] = userGroups;
     }
 
     function createGroup (string memory _groupName, string memory _groupOwnerName) public returns(uint) {
