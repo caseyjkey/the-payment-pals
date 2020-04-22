@@ -15,7 +15,7 @@ contract PaymentHub {
 
     struct Group {
         string name;
-        Member[] friends;
+        address[] friends;
         uint256 id;
     }
 
@@ -23,18 +23,20 @@ contract PaymentHub {
         // Change address1 to be the first address in your truffle development environment
         address address1 = 0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;
 
-        Group memory group = Group("Pay Pals", new Member[](0), 0);
+        // This data structure found at
+        // https://bit.ly/2xOjH8Y
+        Group memory group = Group("Pay Pals", new address[](0), 0);
         groups.push(group);
-        groups[groups.length-1].friends.push(Member("Casey", 20, address1));
+        groups[groups.length-1].friends.push(address1);
         userGroups.push(groups[groups.length-1]);
 
         userToGroups[address1] = userGroups;
     }
 
-    function createGroup (string memory _groupName, string memory _groupOwnerName) public returns(uint) {
+    function createGroup(string memory _groupName) public returns(uint) {
         uint groupID = groups.length++; // Manually increase the groups array size
         groups[groupID].name = _groupName; // Manually set the group name
-        groups[groupID].friends.push(Member(_groupOwnerName, 0, msg.sender)); // Add the first member, which is the creator
+        groups[groupID].friends.push(msg.sender); // Add the first member, which is the creator
         groups[groupID].id = groupID;
 
         return groupID;
