@@ -1,13 +1,12 @@
-pragma solidity >=0.4.21 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 contract PaymentHub {
 
     // Mapping for finding a user's groups
     mapping (address => Group[]) public userToGroups;
     mapping (address => int256) public userToBalance;
-    Group[] public userGroups;
 
-    Group[] groups; // The contract stores all groups, serves as a hub. Various groups will not interact with each other
+    Group[] public groups; // The contract stores all groups, serves as a hub. Various groups will not interact with each other
 
     struct Member {
         string name;
@@ -17,31 +16,25 @@ contract PaymentHub {
 
     struct Group {
         string name;
-        address[] friends;
+        Member[] friends;
         uint256 id;
     }
 
     constructor() public {
-        // Change address1 to be the first address in your truffle development environment
-        address address1 = 0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;
-
         // This data structure found at
-        // https://bit.ly/2xOjH8Y
-        Group memory group = Group("Pay Pals", new address[](0), 0);
-        groups.push(group);
-        groups[groups.length-1].friends.push(address1);
-        userGroups.push(groups[groups.length-1]);
-
-        userToGroups[address1] = userGroups;
+        // https://bit.ly/3azD3fx
+        createGroup("PayPals", "Creator");
     }
 
-    function createGroup(string memory _groupName) public returns(uint) {
+    function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {
         uint groupID = groups.length++; // Must be compiled below 0.6 to increase length this way // Manually increase the groups array size
-        groups[groupID].name = _groupName; // Manually set the group name
-        groups[groupID].friends.push(msg.sender); // Add the first member, which is the creator
-        groups[groupID].id = groupID;
+        Group storage group = groups[groups.length - 1];
+        group.name = _groupName; // Manually set the group name
+        Member memory member = Member(_groupOwnerName, 0, msg.sender);
+        group.friends.push(member); // Add the first member, which is the creator
+        group.id = groupID;
 
-        userToGroups[msg.sender].push(groups[groupID]);
+        userToGroups[msg.sender].push(group);
 
         return groupID;
     }
@@ -57,11 +50,11 @@ contract PaymentHub {
     }
 
     // Mainly for testing, can be removed later
-    function getFriendsInGroup(uint _gid) public view returns (address[] memory) {
+    function getFriendsInGroup(uint _gid) public view returns (Member[] memory) {
         return groups[_gid].friends;
     }
 
-    function addFriend(address _newFriend, uint _groupID) public {
+    function addFriend(Member memory _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
     }
 
