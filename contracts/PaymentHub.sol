@@ -39,7 +39,7 @@ contract PaymentHub {
         return groupID;
     }
 
-    /* Mainly for testing, can be removed later
+    // Mainly for testing, can be removed later
     function getGroupSize() public view returns(uint) {
         return groups.length;
     }
@@ -50,11 +50,11 @@ contract PaymentHub {
     }
 
     // Mainly for testing, can be removed later
-    function getFriendsInGroup(uint _gid) public view returns (address[] memory) {
+    function getFriendsInGroup(uint _gid) public view returns (Member[] memory) {
         return groups[_gid].friends;
     }
 
-    function addFriend(address _newFriend, uint _groupID) public {
+    function addFriend(Member memory _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
     }
 
@@ -65,6 +65,6 @@ contract PaymentHub {
 
     function getNumUserGroups(address _add) public view returns (uint){
         return userToGroups[_add].length;
-    } */
+    }
 
 }
