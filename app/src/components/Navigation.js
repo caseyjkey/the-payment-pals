@@ -13,7 +13,7 @@ export default () => {
 
   useEffect(() => {
     if (drizzleContext.initialized) {
-      const contract = drizzleContext.drizzle.contracts.ComplexStorage;
+      const contract = drizzleContext.drizzle.contracts.PaymentHub;
       const dataKey = contract.methods["userToGroups"].cacheCall(account, 0);
       setDataKey(dataKey);
       console.log(dataKey);
@@ -22,7 +22,7 @@ export default () => {
 
   useEffect(() => {
     if (dataKey) {
-      const ContractStore = drizzleContext.drizzleState.contracts.ComplexStorage;
+      const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
       // Use the saved 'dataKey' to get the return value from earlier.
       setGroups(ContractStore.userToGroups[dataKey].value)
     }
