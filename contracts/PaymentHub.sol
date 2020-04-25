@@ -67,4 +67,11 @@ contract PaymentHub {
         return userToGroups[_add].length;
     }
 
+    function transaction(address _payer, address[] memory _payedFor, int[] memory _amounts, int _total) public {
+        for (uint i = 0; i < _payedFor.length; i++) {
+            userToBalance[_payedFor[i]] -= _amounts[i];
+        }
+        userToBalance[_payer] += _total; // We can take out having an input based total, and just keep a running total if we wish.
+    }
+
 }
