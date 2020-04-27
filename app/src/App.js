@@ -4,7 +4,7 @@ import { Drizzle } from "@drizzle/store";
 import drizzleOptions from "./drizzleOptions";
 import PaymentPals from "./PaymentPals";
 import "./App.css";
-import Modal from "./components/Modal";
+import WelcomeModal from "./components/Modal";
 
 // For info on how drizzle works including drizzleContext
 // visit https://www.npmjs.com/package/@umaprotocol/react-plugin
@@ -24,7 +24,7 @@ const App = () => {
             return (
                 <div>
                     <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
-                    <Modal />
+                    <WelcomeModal />
               </div>
           )
         }}

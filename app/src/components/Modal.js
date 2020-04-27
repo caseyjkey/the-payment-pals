@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Contract } from "web3-eth-contract";
 
-const ModalExample = (props) => {
+const WelcomeModal = (props) => {
     const {
         buttonLabel,
         className
@@ -12,6 +13,7 @@ const ModalExample = (props) => {
     const [modal, setModal] = useState(false);
     const [userMember, setUserMember] = useState(true);
     const account = drizzleContext.drizzleState.accounts[0];
+    const [nameDataKey, setNameDataKey] = useState()
     const [name, setName] = useState('');
 
     const toggle = () => setModal(!modal);
@@ -37,24 +39,32 @@ const ModalExample = (props) => {
     }
 
     useEffect(() => {
-        const contract = drizzleContext.drizzle.contracts.PaymentHub;
-        const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
+        if (drizzleContext.initialized) {
+            const contract = drizzleContext.drizzle.contracts.PaymentHub;
+            const nameDataKey = contract.methods["userToMember"].cacheCall(account);
+            setNameDataKey(nameDataKey);
+        }
+    }, [drizzleContext.initialized]);
 
-        const nameDataKey = contract.methods["userToMember"].cacheCall(account);
+    useEffect(() => {
+        const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
 
         // If a user is not mapped to a member, show them the welcome modal
         if (!ContractStore.userToMember[nameDataKey]) {
+            console.log("yeet");
             setUserMember(false);
-            toggle();
+            setModal(true);
         }
-
+        else {
+            setUserMember(true);
+            setModal(false);
+        }
     }, [drizzleContext.drizzleState]);
 
     // To test this Modal, change the below 'userMember' to true
-    if (userMember) {
+    if (!userMember) {
         return (
             <div>
-                <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
                 <Modal isOpen={modal} toggle={toggle} className={className}>
                     <ModalHeader toggle={toggle}>Welcome To PaymentPals</ModalHeader>
                     <ModalBody>
@@ -81,4 +91,4 @@ const ModalExample = (props) => {
     }
 }
 
-export default ModalExample;
+export default WelcomeModal;
