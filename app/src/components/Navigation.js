@@ -38,9 +38,9 @@ export default () => {
   }, [drizzleContext.drizzleState]);
 
   
-  return (
-    <div className="navbar">
-        <h2>{name && name.name}'s Group: {groups && groups.name}</h2>
+    return (
+        <div className="header" >
+            <h2>{name && name.name}'s Group: {groups && groups.name}</h2>
     </div>
   );
 };
