@@ -1,6 +1,5 @@
 import React from "react";
 import Navigation from "./components/Navigation.js";
-import Modal from "./components/Modal";
 
 export default ({ drizzle, drizzleState }) => {
     // destructure drizzle and drizzleState from props
@@ -14,7 +13,6 @@ export default ({ drizzle, drizzleState }) => {
                 drizzle={drizzle}
                 drizzleState={drizzleState}
             />
-            <Modal />
         </div>
     );
 };
