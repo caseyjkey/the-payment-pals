@@ -34,14 +34,10 @@ export default () => {
 
   useEffect(() => {
     const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
-    console.log("yo");
-    console.log("aye", groupsDataKey);
     console.log(ContractStore.userToGroups[groupsDataKey]);
     // Use the saved 'dataKey' to get the return value from earlier.
     if (groupsDataKey) {
-      console.log("before poop");
       setGroups(ContractStore.userToGroups[groupsDataKey].value);
-      console.log("poop");
       console.log(groups);
     }
     if (nameDataKey && ContractStore.userToMember[nameDataKey]) {
@@ -49,7 +45,6 @@ export default () => {
     }
   }, [drizzleContext.drizzleState]);
 
-  console.log("outside");
   
   return (
 
