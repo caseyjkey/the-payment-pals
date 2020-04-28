@@ -25,6 +25,7 @@ contract PaymentHub {
         // This data structure found at
         // https://bit.ly/3azD3fx
         createGroup("PayPals", "Creator");
+        createGroup("PaymentPals", "Creator");
     }
 
     function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {
