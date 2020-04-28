@@ -1,46 +1,81 @@
 import React, { useEffect, useState, useContext } from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
-import { Contract } from "web3-eth-contract";
+import { Navbar, NavbarBrand, Nav, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 
 export default () => {
 
   const drizzleContext = useContext(DrizzleContext.Context);
-  const [groupsDataKey, setGroupsDataKey] = useState(null);
-  const [groups, setGroups] = useState(null);
+
+  const [groupSizeDataKey, setGroupSizeDataKey] = useState(null);
+  let groupDataKeys = [];
+  const [GDKs, saveGDKs] = useState([]);
+  let groupsTemp = [];
+  const [groups, saveGroups] = useState([]);
+
   const [nameDataKey, setNameDataKey] = useState(null);
   const [name, setName] = useState(null);
   const account = drizzleContext.drizzleState.accounts[0]; 
 
-  const web3 = drizzleContext.drizzle.web3;
+  const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
+  const contract = drizzleContext.drizzle.contracts.PaymentHub;
 
+
+  // Get initial state
   useEffect(() => {
     if (drizzleContext.initialized) {
-      const contract = drizzleContext.drizzle.contracts.PaymentHub;
-
-      const groupsDataKey = contract.methods["userToGroups"].cacheCall(account, 0);
-      setGroupsDataKey(groupsDataKey);
-    
-      const nameDataKey = contract.methods["userToMember"].cacheCall(account);
-      setNameDataKey(nameDataKey);
+      setGroupSizeDataKey(contract.methods["getNumUserGroups"].cacheCall(account));
+      setNameDataKey(contract.methods["userToMember"].cacheCall(account));
     }
   }, [drizzleContext.initialized]);
 
+  // Get the name once datakey available 
   useEffect(() => {
-    const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
-
-    // Use the saved 'dataKey' to get the return value from earlier.
-    if (groupsDataKey) {
-      setGroups(ContractStore.userToGroups[groupsDataKey].value);
-    }
     if (nameDataKey && ContractStore.userToMember[nameDataKey]) {
       setName(ContractStore.userToMember[nameDataKey].value);
     }
-  }, [drizzleContext.drizzleState]);
+  }, [ContractStore.userToMember, nameDataKey]);
+
+  // Get an array of keys for accessing each group for the current user
+  useEffect(() => {
+    if (ContractStore.getNumUserGroups[groupSizeDataKey]) {
+      for(let i = 0; i < ContractStore.getNumUserGroups[groupSizeDataKey].value; i++) {
+        let groupDataKey = contract.methods["userToGroups"].cacheCall(account, i);
+        groupDataKeys.push(groupDataKey);
+      } 
+    }
+    saveGDKs(groupDataKeys);
+  }, [ContractStore.getNumUserGroups, groupSizeDataKey]);
+
+
+  // Access each group and add to the list of groups
+  useEffect(() => {
+    if (GDKs.length > 0) {
+      for (let groupDataKey of GDKs) {
+        let group = ContractStore.userToGroups[groupDataKey];
+        if (group) {
+          groupsTemp.push(ContractStore.userToGroups[groupDataKey].value);
+        } 
+      }
+    }
+    saveGroups(groupsTemp);
+  }, [ContractStore.userToGroups, GDKs]);
 
   
-    return (
-        <div className="header" >
-            <h2>{name && name.name}'s Group: {groups && groups.name}</h2>
+  return (
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">{name && name.name}'s Group: {groups[0] && groups[0].name}</NavbarBrand>
+          <Nav className="mr-auto" navbar className="clearfix">
+            <UncontrolledDropdown nav className="float-right">
+              <DropdownToggle nav caret>
+                Groups
+              </DropdownToggle>
+              <DropdownMenu right>
+                { groups && groups.map((group, index) => <DropdownItem key={index}>{group.name}</DropdownItem> )}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+      </Navbar>
     </div>
   );
 };

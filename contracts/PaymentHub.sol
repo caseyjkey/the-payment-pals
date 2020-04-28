@@ -25,6 +25,7 @@ contract PaymentHub {
         // This data structure found at
         // https://bit.ly/3azD3fx
         createGroup("PayPals", "Creator");
+        createGroup("PaymentPals", "Creator");
     }
 
     function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {
@@ -71,6 +72,7 @@ contract PaymentHub {
         return userToGroups[_add].length;
     }
 
+    // consider renaming to payForFriends
     function transaction(address _payer, address[] memory _payedFor, int[] memory _amounts, int _total) public {
         for (uint i = 0; i < _payedFor.length; i++) {
             userToBalance[_payedFor[i]] -= _amounts[i];

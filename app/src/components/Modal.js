@@ -51,7 +51,6 @@ const WelcomeModal = (props) => {
 
         // If a user is not mapped to a member, show them the welcome modal
         if (!ContractStore.userToMember[nameDataKey]) {
-            console.log("yeet");
             setUserMember(false);
             setModal(true);
         }
