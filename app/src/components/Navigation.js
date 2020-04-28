@@ -66,8 +66,8 @@ export default ({gid, setGID}) => {
         <NavbarBrand href="/">
           {name && name.name}'s Group: {groups[gid] && groups[gid].name}
         </NavbarBrand>
-        <Nav navbar>
-          <UncontrolledDropdown nav>
+        <Nav className="ml-auto" navbar>
+          <UncontrolledDropdown  nav>
             <DropdownToggle nav>
               Change Group
             </DropdownToggle>
