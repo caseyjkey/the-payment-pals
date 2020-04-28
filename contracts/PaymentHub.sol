@@ -25,7 +25,7 @@ contract PaymentHub {
         // This data structure found at
         // https://bit.ly/3azD3fx
         createGroup("PayPals", "Creator");
-        createGroup("PaymentPals", "Creator");
+        createGroup("PaymentPals", "Shouldn'tShow");
     }
 
     function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {
@@ -39,7 +39,9 @@ contract PaymentHub {
         group.id = groupID;
 
         userToGroups[msg.sender].push(group);
-        userToMember[msg.sender] = member;
+        if(userToMember[msg.sender].addy == address(0)) {
+            userToMember[msg.sender] = member;
+        }
 
         return groupID;
     }
