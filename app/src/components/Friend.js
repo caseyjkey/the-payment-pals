@@ -1,12 +1,12 @@
-import Card from "reactstrap";
+import {Card, CardTitle, CardText} from "reactstrap";
 import React from "react";
 
 export default class Friend extends React.Component {
     render() {
         return <Card style={{ width: '18rem', height: '18rem' }}>
-            <Card.Title>{this.props.name}</Card.Title>
-            <Card.Text>Address: {this.props.address}</Card.Text>
-            <Card.Text>Balance: {this.props.balance}</Card.Text>
+            <CardTitle>{this.props.name}</CardTitle>
+            <CardText>Address: {this.props.address}</CardText>
+            <CardText>Balance: {this.props.balance}</CardText>
         </Card>
     }
 }
