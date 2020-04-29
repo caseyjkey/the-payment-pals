@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card";
+import Card from "reactstrap";
 import React from "react";
 
 export default class Friend extends React.Component {
