@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import { Navbar, NavbarBrand, Nav, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 
-export default () => {
+export default ({gid, setGID}) => {
 
   const drizzleContext = useContext(DrizzleContext.Context);
 
@@ -18,7 +18,6 @@ export default () => {
 
   const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
   const contract = drizzleContext.drizzle.contracts.PaymentHub;
-
 
   // Get initial state
   useEffect(() => {
@@ -60,21 +59,32 @@ export default () => {
     saveGroups(groupsTemp);
   }, [ContractStore.userToGroups, GDKs]);
 
-  
+
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">{name && name.name}'s Group: {groups[0] && groups[0].name}</NavbarBrand>
-          <Nav className="mr-auto" navbar className="clearfix">
-            <UncontrolledDropdown nav className="float-right">
-              <DropdownToggle nav caret>
-                Groups
-              </DropdownToggle>
-              <DropdownMenu right>
-                { groups && groups.map((group, index) => <DropdownItem key={index}>{group.name}</DropdownItem> )}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
+        <NavbarBrand href="/">
+          {name && name.name}'s Group: {groups[gid] && groups[gid].name}
+        </NavbarBrand>
+        <Nav className="ml-auto" navbar>
+          <UncontrolledDropdown  nav>
+            <DropdownToggle nav>
+              Change Group
+            </DropdownToggle>
+            <DropdownMenu>
+              { groups && 
+                groups.map((group, index) => 
+                  <DropdownItem active={parseInt(group.id) === gid} 
+                                key={index} 
+                                onClick={() => setGID(parseInt(group.id))}
+                  >
+                    {group.name}
+                  </DropdownItem> 
+                )
+              }
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </Nav>
       </Navbar>
     </div>
   );
