@@ -61,6 +61,11 @@ contract PaymentHub {
         return groups[_gid].friends;
     }
 
+    // Mainly for testing, can be removed later
+    function numFriendsInGroup(uint _gid) public view returns (int memory) {
+        return groups[_gid].friends.length;
+    }
+
     function addFriend(Member memory _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
     }
