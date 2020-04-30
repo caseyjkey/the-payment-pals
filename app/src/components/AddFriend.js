@@ -45,12 +45,12 @@ export default class AddFriend extends Component {
         return(
             <Modal
                 trigger={
-                    <Button primary onClick={this.handleOpen()}>
+                    <Button primary onClick={this.handleOpen}>
                         Add friend
                     </Button>
                 }
                 open={this.state.modalOpen}
-                onClose={this.handleClose()}>
+                onClose={this.handleClose}>
                 <Header icon="browser" content="Add a friend to the group" />
                 <Modal.content>
                     <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
