@@ -2,12 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Contract } from "web3-eth-contract";
+import { newContextComponents } from "@drizzle/react-components";
 
-const WelcomeModal = (props) => {
-    const {
-        buttonLabel,
-        className
-    } = props;
+const { AccountData, ContractData, ContractForm } = newContextComponents;
+
+const WelcomeModal = ({ drizzle, drizzleState }) => {
 
     const drizzleContext = useContext(DrizzleContext.Context);
     const [modal, setModal] = useState(false);
@@ -38,7 +37,7 @@ const WelcomeModal = (props) => {
         alert('Join a Group');
     }
 
-    useEffect(() => {
+  /*  useEffect(() => {
         if (drizzleContext.initialized) {
             const contract = drizzleContext.drizzle.contracts.PaymentHub;
             const nameDataKey = contract.methods["userToMember"].cacheCall(account);
@@ -48,7 +47,9 @@ const WelcomeModal = (props) => {
 
     useEffect(() => {
         const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
-
+        setModal(true);
+        toggle();
+        
         // If a user is not mapped to a member, show them the welcome modal
         if (!ContractStore.userToMember[nameDataKey]) {
             setUserMember(false);
@@ -57,24 +58,31 @@ const WelcomeModal = (props) => {
         else {
             setUserMember(true);
             setModal(false);
-        }
-    }, [drizzleContext.drizzleState]);
+        
+    }, [drizzleContext.drizzleState]);}*/
 
     // To test this Modal, change the below 'userMember' to true
-    if (!userMember) {
+    if (true) { //testing only!
         return (
             <div>
-                <Modal isOpen={modal} toggle={toggle} className={className}>
+                <Modal isOpen={true} toggle={toggle}>
                     <ModalHeader toggle={toggle}>Welcome To PaymentPals</ModalHeader>
                     <ModalBody>
                         Please enter your name.
-                        <form onSubmit={handleSubmit}>
-                            <label>
-                                Name: {' '}
-                            <input type="text" value={name} onChange={handleChange} />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form>
+                         <div className="section">
+                        <p>
+
+                            <strong>Stored Value: </strong>
+                            <ContractData
+                                drizzle={drizzle}
+                                drizzleState={drizzleState}
+                                contract="SimpleStorage"
+                                method="data"
+                                toUtf8
+                            />
+                            </p>
+                            </div>
+                        <ContractForm drizzle={drizzle} contract="SimpleStorage" method="set" />
                         It looks like you are not a part of a group yet. Would you like to join or create a group?
                 </ModalBody>
                     <ModalFooter>
