@@ -37,7 +37,7 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
         alert('Join a Group');
     }
 
-  /*  useEffect(() => {
+   useEffect(() => {
         if (drizzleContext.initialized) {
             const contract = drizzleContext.drizzle.contracts.PaymentHub;
             const nameDataKey = contract.methods["userToMember"].cacheCall(account);
@@ -50,16 +50,16 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
         setModal(true);
         toggle();
         
-        // If a user is not mapped to a member, show them the welcome modal
+        /* // If a user is not mapped to a member, show them the welcome modal
         if (!ContractStore.userToMember[nameDataKey]) {
             setUserMember(false);
             setModal(true);
         }
         else {
             setUserMember(true);
-            setModal(false);
+            setModal(false);*/
         
-    }, [drizzleContext.drizzleState]);}*/
+    }, [drizzleContext.drizzleState]);
 
     // To test this Modal, change the below 'userMember' to true
     if (true) { //testing only!
@@ -69,20 +69,16 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
                     <ModalHeader toggle={toggle}>Welcome To PaymentPals</ModalHeader>
                     <ModalBody>
                         Please enter your name.
-                         <div className="section">
                         <p>
-
                             <strong>Stored Value: </strong>
                             <ContractData
                                 drizzle={drizzle}
                                 drizzleState={drizzleState}
-                                contract="SimpleStorage"
-                                method="data"
+                                contract="PaymentHub"
+                                method="string1"
                                 toUtf8
                             />
-                            </p>
-                            </div>
-                        <ContractForm drizzle={drizzle} contract="SimpleStorage" method="set" />
+                        </p>
                         It looks like you are not a part of a group yet. Would you like to join or create a group?
                 </ModalBody>
                     <ModalFooter>

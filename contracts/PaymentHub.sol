@@ -2,6 +2,8 @@ pragma experimental ABIEncoderV2;
 
 contract PaymentHub {
 
+	string public string1 = "Test";
+
     // Mapping for finding a user's groups
     mapping (address => Group[]) public userToGroups;
     mapping (address => int256) public userToBalance;
