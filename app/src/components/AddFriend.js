@@ -23,11 +23,8 @@ export default class AddFriend extends Component {
             message: "Waiting for blockchain transaction to complete..."
         });
         try{
-            await this.props.PP.methods
-                .addFriend({ name: this.state.name, balance: 0, addy: this.state.address }, this.props.groupId)
-                .send({
-                    from: this.props.userAddress
-                });
+            await this.props.drizzle.contracts.PaymentHub.methods["addFriend"]
+                .cacheCall({ name: this.state.name, balance: 0, addy: this.state.address }, this.props.groupId);
             this.setState({
                 loading: false,
                 message: "New friend added!"
@@ -52,7 +49,7 @@ export default class AddFriend extends Component {
                 open={this.state.modalOpen}
                 onClose={this.handleClose}>
                 <Header icon="browser" content="Add a friend to the group" />
-                <Modal.content>
+                <Modal.Content>
                     <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Friend name</label>
@@ -78,7 +75,7 @@ export default class AddFriend extends Component {
                         <hr />
                         <h2>{this.state.message}</h2>
                     </Form>
-                </Modal.content>
+                </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
                         <Icon name="cancel" /> Close
