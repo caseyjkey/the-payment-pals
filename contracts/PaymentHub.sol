@@ -34,7 +34,7 @@ contract PaymentHub {
     }
 
     function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {
-        uint groupID = groups.length; // Must be compiled below 0.6 to increase length this way // Manually increase the groups array size
+        uint groupID = groups.length++; // Must be compiled below 0.6 to increase length this way // Manually increase the groups array size
         Group storage group = groups[groups.length - 1];
 
         Member memory member = Member(_groupOwnerName, 0, msg.sender);
@@ -59,11 +59,6 @@ contract PaymentHub {
 
     // Mainly for testing, can be removed later
     function getGroupSize() public view returns (uint) {
-        return groups.length;
-    }
-
-    // Mainly for testing, can be removed later
-    function getGroupName(uint _gid) public view returns (uint) {
         return groups.length;
     }
 

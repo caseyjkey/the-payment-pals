@@ -76,7 +76,10 @@ export default ({gid, setGID}) => {
                 groups.map((group, index) => 
                   <DropdownItem active={parseInt(group.id) === gid} 
                                 key={index} 
-                                onClick={() => setGID(parseInt(group.id))}
+                                onClick={() => {
+                                  console.log(group);
+                                  setGID(parseInt(group.id))
+                                }}
                   >
                     {group.name}
                   </DropdownItem> 
