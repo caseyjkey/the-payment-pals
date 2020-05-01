@@ -4,7 +4,7 @@ import Friends from "./components/Friends.js";
 
 export default ({ drizzle, drizzleState }) => {
     // destructure drizzle and drizzleState from props
-    const [groupID, setGroupID] = useState(1);
+    const [groupID, setGroupID] = useState(0);
 
 
     return (
