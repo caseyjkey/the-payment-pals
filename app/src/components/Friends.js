@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { DrizzleContext } from "@drizzle/react-plugin";
+import { Container, Row, Col } from "reactstrap";
 import Friend from './Friend.js';
-import { Contract } from "web3-eth-contract";
 
 export default ({ gid }) => {
   const drizzleContext = useContext(DrizzleContext.Context);
@@ -53,32 +53,35 @@ export default ({ gid }) => {
   // Add each friend to array of friends
   useEffect(() => {
     let friendsTemp = [];
-    console.log("Start", friends);
     if (friendDataKeys.length > 0 && friendDataKeys.length == numFriends) {
-      console.log("Nums: ", friendDataKeys.length, numFriends)
       for (let friendDataKey of friendDataKeys) {
         let friend = ContractStore.friendInGroup[friendDataKey];
         if (friend && friend.value) {
-          console.log("Friend", friend);
           friendsTemp.push(friend.value);
         }
       }
       saveFriends(friendsTemp);
-      console.log("temp", friendsTemp);
     }
   }, [gid, ContractStore.friendInGroup, friendDataKeys])
 
-  console.log("render", friends);
 
   return (
     <div>
       <h3>There are {numFriends} friends in this group.</h3>
-      {friends && friends.map((friend, index) => {
-        return (<Friend name={friend.name}
-                address={friend.addy}
-                balance={friend.balance}
-        /> );
-      })}
+      <Container>
+        <Row xs="1" sm="2" lg="4">
+          {friends && friends.map((friend, index) => {
+            return (
+              <Col key={index}>
+                <Friend name={friend.name}
+                        address={friend.addy}
+                        balance={friend.balance}
+                />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </div>
   );
 }
