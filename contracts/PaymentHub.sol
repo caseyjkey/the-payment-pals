@@ -76,13 +76,13 @@ contract PaymentHub {
     }
 
     // consider renaming to payForFriends
-    function transaction(address _payer, address[] memory _payedFor, int[] memory _amounts) public {
+    function transaction(address[] memory _payedFor, int[] memory _amounts) public {
         int total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
             userToBalance[_payedFor[i]] -= _amounts[i];
             total += _amounts[i];
         }
-        userToBalance[_payer] += total;
+        userToBalance[msg.sender] += total;
     }
 
 }
