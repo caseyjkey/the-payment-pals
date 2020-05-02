@@ -29,8 +29,8 @@ contract PaymentHub {
         Member memory member = Member("Cofounder", 200, address(0x6A46eF78714f530e995369B03BB9F471583D114D));
         Member memory member2 = Member("Investor", 10000, address(0x2C10f237735e65e777D33348475000d9FAe0b7Dd));
         addFriend(member, 0);
-        addFriend(member, 1); // For some reason PaymentPals is group 2, not 1?
-        addFriend(member2, 1);
+        addFriend(member, 2); // For some reason PaymentPals is group 2, not 1?
+        addFriend(member2, 2);
     }
 
     function createGroup(string memory _groupName, string memory _groupOwnerName) public returns(uint) {

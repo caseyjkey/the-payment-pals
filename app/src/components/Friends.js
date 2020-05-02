@@ -7,11 +7,8 @@ export default ({ gid }) => {
   const drizzleContext = useContext(DrizzleContext.Context);
 
   const [friendDataKeys, setFriendDataKeys] = useState([]);
-  const [GDK, setGDK] = useState(null);
-  const [group, saveGroup] = useState(null);
   const [numFriendsDataKey, setNumFriendsDataKey] = useState(null);
   const [numFriends, setNumFriends] = useState(null);
-  const [FDKs, saveFDKs] = useState([]);
   const [friends, saveFriends] = useState([]);
 
   const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
@@ -21,16 +18,8 @@ export default ({ gid }) => {
   useEffect(() => {
     if (drizzleContext.initialized) {
       setNumFriendsDataKey(contract.methods["numFriendsInGroup"].cacheCall(gid));
-      setGDK(contract.methods["getGroupSize"].cacheCall());
     }
   }, [drizzleContext.initialized, gid]);
-
-  // Get groupDataKey
-  useEffect(() => {
-    if (GDK && ContractStore.getGroupSize[GDK]) {
-      console.log("Group", ContractStore.getGroupSize[GDK]);
-    }
-  }, [ContractStore.getGroup, GDK]);
 
   // Set numFriends once dataKey available
   useEffect(() => {
@@ -41,7 +30,6 @@ export default ({ gid }) => {
 
   // Get an array of keys for accessing each friend
   useEffect(() => {
-    console.log(numFriends);
     if (numFriends) {
       for (let i = 0, FDKs = []; i < numFriends; i++) {
         FDKs.push(contract.methods["friendInGroup"].cacheCall(gid, i));
@@ -67,7 +55,7 @@ export default ({ gid }) => {
 
   return (
     <div>
-      <h3>There are {numFriends} friends in this group.</h3>
+      <h3>There {(numFriends == 1 ? 'is ' : 'are ') + numFriends} friends in this group.</h3>
       <Container>
         <Row xs="1" sm="2" lg="4">
           {friends && friends.map((friend, index) => {
