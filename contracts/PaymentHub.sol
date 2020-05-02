@@ -74,9 +74,10 @@ contract PaymentHub {
         groups[_groupID].friends.push(_newFriend);
     }
 
-    function payFriend(address _friend, int _amt) public {
-        userToBalance[msg.sender] -= _amt;
-        userToBalance[_friend] += _amt;
+    function payFriend(address payable  _friend) external payable {
+        _friend.transfer(msg.value);
+        userToBalance[msg.sender] -= int(msg.value/1000000000000000000);
+        userToBalance[_friend] += int(msg.value/1000000000000000000);
     }
 
     function getNumUserGroups(address _add) public view returns (uint){
@@ -84,11 +85,13 @@ contract PaymentHub {
     }
 
     // consider renaming to payForFriends
-    function transaction(address _payer, address[] memory _payedFor, int[] memory _amounts, int _total) public {
+    function transaction(address[] memory _payedFor, int[] memory _amounts) public {
+        int total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
             userToBalance[_payedFor[i]] -= _amounts[i];
+            total += _amounts[i];
         }
-        userToBalance[_payer] += _total; // We can take out having an input based total, and just keep a running total if we wish.
+        userToBalance[msg.sender] += total;
     }
 
 }
