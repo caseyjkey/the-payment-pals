@@ -65,10 +65,10 @@ contract PaymentHub {
         groups[_groupID].friends.push(_newFriend);
     }
 
-    function payFriend(address payable _friend, int _amt) public payable {
-        _friend.transfer(uint(_amt));
-        userToBalance[msg.sender] -= _amt;
-        userToBalance[_friend] += _amt;
+    function payFriend(address payable  _friend) external payable {
+        _friend.transfer(msg.value);
+        userToBalance[msg.sender] -= int(msg.value/1000000000000000000);
+        userToBalance[_friend] += int(msg.value/1000000000000000000);
     }
 
     function getNumUserGroups(address _add) public view returns (uint){
