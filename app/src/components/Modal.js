@@ -12,7 +12,6 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
     const [modal, setModal] = useState(false);
     const account = drizzleContext.drizzleState.accounts[0];
     const [nameDataKey, setNameDataKey] = useState();
-    const [wasNameSet, setWasNameSet] = useState(null);
 
     const toggle = () => setModal(!modal);
 
@@ -33,19 +32,17 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
         if (drizzleContext.initialized) {
             const nameDataKey = contract.methods["userToMember"].cacheCall(account);
             setNameDataKey(nameDataKey);
-            //Attempting to get the bool value 'nameSet' in the member struct
-            setWasNameSet(contract.methods["isNameSet"].cacheCall());
-            //loggin null instead of true or false like I expect
-            console.log('nameSet: ', wasNameSet);
         }
     }, [drizzleContext.initialized]);
 
     useEffect(() => {
-        //If a Members nameSet is false, then show the modal so they can set thier name
-        if (true) {
+        // If a user is not mapped to a member, show them the welcome modal
+        if (!ContractStore.userToMember[nameDataKey]) {
             setModal(true);
         }
-
+        else {
+            setModal(false);
+        }
     }, [drizzleContext.drizzleState]);
 
     return (
