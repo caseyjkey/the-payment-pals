@@ -16,7 +16,9 @@ export default ({ gid }) => {
 
   // Set initial state
   useEffect(() => {
+    console.log("gid updated", gid)
     if (drizzleContext.initialized) {
+      console.log("inited")
       setNumFriendsDataKey(contract.methods["numFriendsInGroup"].cacheCall(gid));
     }
   }, [drizzleContext.initialized, gid]);

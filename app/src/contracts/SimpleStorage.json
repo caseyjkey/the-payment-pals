@@ -611,6 +611,27 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {
+        "0x60cdc157ca4737a5d39a0e107532616e7bf6946e615228812c7f9bc9f81797a6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "StorageSet",
+          "type": "event",
+          "signature": "0x60cdc157ca4737a5d39a0e107532616e7bf6946e615228812c7f9bc9f81797a6"
+        }
+      },
+      "links": {},
+      "address": "0xEEB260464667562849C83a7B476D7fce1b7DA577",
+      "transactionHash": "0xadcdc7aa6ca069067c2f0d4949ba47d2459dc6920171b4ee22cbc3305894742f"
+    },
     "5777": {
       "events": {
         "0x60cdc157ca4737a5d39a0e107532616e7bf6946e615228812c7f9bc9f81797a6": {
@@ -634,7 +655,7 @@
     }
   },
   "schemaVersion": "3.0.22",
-  "updatedAt": "2020-05-01T23:45:43.063Z",
+  "updatedAt": "2020-05-03T05:46:57.411Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
