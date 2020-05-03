@@ -9,8 +9,8 @@ export default ({gid, setGID}) => {
   const [groupSizeDataKey, setGroupSizeDataKey] = useState(null);
   let groupDataKeys = [];
   const [GDKs, saveGDKs] = useState([]);
-  let groupsTemp = [];
-  const [groups, saveGroups] = useState([]);
+  let groupsTemp = {};
+  const [groups, saveGroups] = useState({});
 
   const [nameDataKey, setNameDataKey] = useState(null);
   const [name, setName] = useState(null);
@@ -52,7 +52,9 @@ export default ({gid, setGID}) => {
       for (let groupDataKey of GDKs) {
         let group = ContractStore.userToGroups[groupDataKey];
         if (group) {
-          groupsTemp.push(ContractStore.userToGroups[groupDataKey].value);
+          group = group.value;
+          groupsTemp[group.id] = group
+          //groupsTemp.push(ContractStore.userToGroups[groupDataKey].value);
         } 
       }
     }
@@ -73,12 +75,12 @@ export default ({gid, setGID}) => {
             </DropdownToggle>
             <DropdownMenu>
               { groups && 
-                groups.map((group, index) => 
-                  <DropdownItem active={parseInt(group.id) === gid} 
+                Object.keys(groups).map((currGid, index) => 
+                  <DropdownItem active={parseInt(currGid) === gid} 
                                 key={index} 
-                                onClick={() => setGID(parseInt(group.id))}
+                                onClick={() => setGID(parseInt(currGid))}
                   >
-                    {group.name}
+                    {groups[currGid].name}
                   </DropdownItem> 
                 )
               }
