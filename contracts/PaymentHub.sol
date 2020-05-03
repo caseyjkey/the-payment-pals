@@ -103,7 +103,7 @@ contract PaymentHub {
 	}
 
 
-    // consider renaming to payForFriends
+    // consider renaming to payForFriends ok
     function transaction(address[] memory _payedFor, int[] memory _amounts) public {
         int total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
