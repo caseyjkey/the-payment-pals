@@ -4,8 +4,7 @@ import PaymentHub from "./contracts/PaymentHub.json";
 
 const options = {
   web3: {
-    block: false,
-    customProvider: new Web3("ws://localhost:8545"),
+    customProvider: new Web3("wss://rinkeby.infura.io/ws/v3/32dab0fd4be0440284d38147e8f5330c"),
   },
   contracts: [SimpleStorage, PaymentHub],
   events: {
