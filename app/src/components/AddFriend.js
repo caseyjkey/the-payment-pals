@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Button, Icon, Modal, Form, Message } from "semantic-ui-react";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 
 export default class AddFriend extends Component {
     state = {
@@ -24,12 +24,13 @@ export default class AddFriend extends Component {
         });
         try{
             await this.props.drizzle.contracts.PaymentHub.methods["addFriend"]
-                .cacheCall({ name: this.state.name, balance: 0, addy: this.state.address }, this.props.groupId);
+                .cacheSend({ name: this.state.name, balance: 0, addy: this.state.address }, this.props.groupId);
             this.setState({
                 loading: false,
                 message: "New friend added!"
             });
         } catch(err) {
+            console.log(err);
             this.setState({
                 loading: false,
                 errorMessage: err.message,
@@ -40,48 +41,37 @@ export default class AddFriend extends Component {
 
     render() {
         return(
-            <Modal
-                trigger={
-                    <Button primary onClick={this.handleOpen}>
-                        Add friend
-                    </Button>
-                }
-                open={this.state.modalOpen}
-                onClose={this.handleClose}>
-                <Header icon="browser" content="Add a friend to the group" />
-                <Modal.Content>
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-                        <Form.Field>
-                            <label>Friend name</label>
-                            <input
-                                placeholder={"Name"}
-                                onChange={event =>
-                                    this.setState({ name: event.target.value })
-                                }/>
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Friend address</label>
+            <div>
+                <Button color="primary" onClick={this.handleOpen}>Add friend</Button>
+                <Modal
+                    isOpen={this.state.modalOpen}
+                    toggle={this.handleClose}>
+                    <ModalHeader>Add a friend to the group</ModalHeader>
+                    <ModalBody>
+                        <form onSubmit={this.onSubmit}>
+                            <div>
+                                <label>Friend name:</label>
+                                <input
+                                    placeholder={"Name"}
+                                    onChange={event =>
+                                        this.setState({ name: event.target.value })
+                                    }/>
+                            </div>
+                            <div>
+                            <label>Friend address:</label>
                             <input
                                 placeholder={"Address"}
                                 onChange={event =>
                                     this.setState({ address: event.target.value })
                                 }/>
-                        </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
-                        <Button primary type="submit" loading={this.state.loading}>
-                            <Icon name="check" />
-                            Add friend
-                        </Button>
-                        <hr />
-                        <h2>{this.state.message}</h2>
-                    </Form>
-                </Modal.Content>
-                <Modal.Actions>
-                    <Button color="red" onClick={this.handleClose} inverted>
-                        <Icon name="cancel" /> Close
-                    </Button>
-                </Modal.Actions>
-            </Modal>
+                            </div>
+                            <Button type="submit" onClick={this.onSubmit}>Submit</Button>
+                            <hr />
+                            <h2>{this.state.message}</h2>
+                        </form>
+                    </ModalBody>
+                </Modal>
+            </div>
         )
     }
 }
