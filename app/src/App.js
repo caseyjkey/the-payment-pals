@@ -19,13 +19,16 @@ const App = () => {
 
           if (!initialized) {
             return "Loading..."
+          } else {
+            console.log(drizzle);
           }
 
-            return (
-                <div>
-                    <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
-                    <WelcomeModal drizzle={drizzle} drizzleState={drizzleState} />
-              </div>
+          
+          return (
+              <div>
+                  <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
+                  <WelcomeModal drizzle={drizzle} drizzleState={drizzleState} />
+            </div>
           )
         }}
       </DrizzleContext.Consumer>

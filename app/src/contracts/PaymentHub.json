@@ -10837,11 +10837,12 @@
       "events": {},
       "links": {},
       "address": "0x7Df9077e50fA1D282f2C995f741b69BB6B53416E",
-      "transactionHash": "0xe2943e06cb319b715d025a95ccb740c453ae6f016ac7bf480a6306972b30c911"
+      "transactionHash": "0x20a92ea1c6f25b0c815e59c272d886119e6e47dad9e4703ff4603801a237597f"
     }
   },
   "schemaVersion": "3.0.22",
-  "updatedAt": "2020-05-03T22:41:14.937Z",
+  "updatedAt": "2020-05-03T23:18:37.969Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
