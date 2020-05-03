@@ -3,13 +3,12 @@ import { DrizzleContext } from "@drizzle/react-plugin";
 import { Container, Row, Col } from "reactstrap";
 import Friend from './Friend.js';
 
-export default ({ gid }) => {
+export default ({ gid, friends, saveFriends }) => {
   const drizzleContext = useContext(DrizzleContext.Context);
 
   const [friendDataKeys, setFriendDataKeys] = useState([]);
   const [numFriendsDataKey, setNumFriendsDataKey] = useState(null);
   const [numFriends, setNumFriends] = useState(null);
-  const [friends, saveFriends] = useState([]);
 
   const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
   const contract = drizzleContext.drizzle.contracts.PaymentHub;
