@@ -50,6 +50,7 @@ export default ({ gid, friends, saveFriends }) => {
         }
       }
       saveFriends(friendsTemp);
+      console.log(friendsTemp);
     }
   }, [gid, ContractStore.friendInGroup, friendDataKeys])
 

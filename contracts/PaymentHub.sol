@@ -107,10 +107,14 @@ contract PaymentHub {
     function transaction(address[] memory _payedFor, int[] memory _amounts) public {
         int total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
-            userToBalance[_payedFor[i]] -= _amounts[i];
+            Member memory member;
+            member.name = userToMember[_payedFor[i]].name;
+            member.addy = userToMember[_payedFor[i]].addy;
+            member.balance = 60000000;
+            userToMember[member.addy] = member;
             total += _amounts[i];
         }
-        userToBalance[msg.sender] += total;
+        userToMember[msg.sender].balance += total;
     }
 
 }
