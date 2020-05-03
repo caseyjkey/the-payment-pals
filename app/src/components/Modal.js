@@ -50,7 +50,7 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Welcome To PaymentPals</ModalHeader>
                 <ModalBody>
-                    <p><h4>Please update your name.</h4></p>
+                    <p><b>Please update your name.</b></p>
                     <p>
                         <strong>Name on file: </strong>
                         <ContractData
