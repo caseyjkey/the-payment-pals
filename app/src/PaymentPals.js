@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navigation from "./components/Navigation.js";
+import AddFriend from "./components/AddFriend.js";
 
 export default ({ drizzle, drizzleState }) => {
     // destructure drizzle and drizzleState from props
@@ -18,6 +19,7 @@ export default ({ drizzle, drizzleState }) => {
                 setGID={setGroupID}
             />
             <h2>Current GID: {groupID}</h2>
+            <AddFriend drizzle={drizzle} groupId={groupID}/>
         </div>
     );
 };
