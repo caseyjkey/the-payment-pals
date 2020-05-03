@@ -12,6 +12,7 @@ export default ({ gid, friends, saveFriends }) => {
 
   const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
   const contract = drizzleContext.drizzle.contracts.PaymentHub;
+  const state = drizzleContext.drizzle.store.getState();
 
   // Set initial state
   useEffect(() => {
@@ -30,12 +31,13 @@ export default ({ gid, friends, saveFriends }) => {
   // Get an array of keys for accessing each friend
   useEffect(() => {
     if (numFriends) {
+      console.log("update in friends!!!!!!!!!!!!\n\n");
       for (let i = 0, FDKs = []; i < numFriends; i++) {
         FDKs.push(contract.methods["friendInGroup"].cacheCall(gid, i));
         setFriendDataKeys(FDKs);
       }
     }
-  }, [numFriends]);
+  }, [numFriends, state.transactions]);
 
   // Add each friend to array of friends
   useEffect(() => {

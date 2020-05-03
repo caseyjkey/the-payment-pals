@@ -23,6 +23,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^2.4.0",
     "bootstrap": "^4.4.1",
+    "reactrangeslider": "^3.0.6",
     "reactstrap": "^8.4.1"
   }
 }

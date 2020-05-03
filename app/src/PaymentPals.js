@@ -15,8 +15,6 @@ export default ({ drizzle, drizzleState }) => {
     // In AddFriend and see what changes, then add that to the
     // Apppropriate Hook to trigger a reload of Friends
 
-    console.log("Friends", friends);
-
     return (
         <div className="App">
             <div className="header">
