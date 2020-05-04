@@ -55,7 +55,7 @@ contract PaymentHub {
         groups.length++;
         Group storage group = groups[groups.length - 1];
 		
-        Member memory member = Member(_groupOwnerName, 0, msg.sender, false);
+        Member memory member = Member(_groupOwnerName, 0, msg.sender, true);
 		userToMember[msg.sender] = member;
         group.friends.push(member); // Add the first member, which is the creator
 
@@ -88,6 +88,7 @@ contract PaymentHub {
 
     function addFriend(Member memory _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
+        userToMember[_newFriend.addy] = _newFriend;
     }
 
     function payFriend(address payable  _friend) external payable {
@@ -105,16 +106,29 @@ contract PaymentHub {
 		return member.nameSet;
 	}
 
+    function updateMember(Member memory member, uint _gid) internal returns (bool) {
+        for (uint i = 0; i < groups[_gid].friends.length; i++) {
+            if(groups[_gid].friends[i].addy == member.addy) {
+                groups[_gid].friends[i] = member;
+                userToMember[member.addy] = member;
+                return true;
+            }
+        }
+        return false;
+    }
 
-    // consider renaming to payForFriends
-    function transaction(address[] memory _payedFor, uint[] memory _amounts) public {
+
+    // consider renaming to payForFriends a
+    function transaction(address[] memory _payedFor, uint[] memory _amounts, uint _gid) public {
         uint total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
-            uint balance = userToMember[_payedFor[i]].balance;
-            console.log(balance);
-            userToMember[_payedFor[i]].balance -= _amounts[i];
-            balance = userToMember[_payedFor[i]].balance;
-            console.log(balance);
+            Member memory member = userToMember[_payedFor[i]];
+            console.log("Addy: ", member.addy);
+            console.log("Name:", member.name);
+            console.log("Balance before:", member.balance);
+            member.balance -= _amounts[i];
+            console.log("Balance after:", member.balance);
+            updateMember(member, _gid);
             total += _amounts[i];
         }
         userToMember[msg.sender].balance += total;

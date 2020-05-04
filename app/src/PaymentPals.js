@@ -33,6 +33,7 @@ export default ({ drizzle, drizzleState }) => {
                             drizzle={drizzle}
                             drizzleState={drizzleState}
                             friends={friends}
+                            gid={groupID}
                         />       
                     </Col>
                     <Col>
