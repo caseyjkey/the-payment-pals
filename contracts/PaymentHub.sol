@@ -1,5 +1,8 @@
 pragma experimental ABIEncoderV2;
 
+import "@nomiclabs/buidler/console.sol";
+
+
 contract PaymentHub {
 
     // Mapping for finding a user's groups
@@ -13,7 +16,7 @@ contract PaymentHub {
 
     struct Member {
         string name;
-        int balance;
+        uint balance;
         address addy;
 		bool nameSet;
     }
@@ -104,13 +107,17 @@ contract PaymentHub {
 
 
     // consider renaming to payForFriends
-    function transaction(address[] memory _payedFor, int[] memory _amounts) public {
-        int total = 0;
+    function transaction(address[] memory _payedFor, uint[] memory _amounts) public {
+        uint total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
-            userToBalance[_payedFor[i]] -= _amounts[i];
+            uint balance = userToMember[_payedFor[i]].balance;
+            console.log(balance);
+            userToMember[_payedFor[i]].balance -= _amounts[i];
+            balance = userToMember[_payedFor[i]].balance;
+            console.log(balance);
             total += _amounts[i];
         }
-        userToBalance[msg.sender] += total;
+        userToMember[msg.sender].balance += total;
     }
 
 }

@@ -18,6 +18,7 @@ const App = () => {
           const { drizzle, drizzleState, initialized } = drizzleContext;
 
           if (!initialized) {
+            console.log(drizzle, drizzleState, initialized);
             return "Loading..."
           }
 
