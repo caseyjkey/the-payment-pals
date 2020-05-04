@@ -1,6 +1,7 @@
 pragma experimental ABIEncoderV2;
 
-import "@nomiclabs/buidler/console.sol";
+// Uncomment for console.log support
+// import "@nomiclabs/buidler/console.sol";
 
 
 contract PaymentHub {
@@ -123,11 +124,7 @@ contract PaymentHub {
         uint total = 0;
         for (uint i = 0; i < _payedFor.length; i++) {
             Member memory member = userToMember[_payedFor[i]];
-            console.log("Addy: ", member.addy);
-            console.log("Name:", member.name);
-            console.log("Balance before:", member.balance);
             member.balance -= _amounts[i];
-            console.log("Balance after:", member.balance);
             updateMember(member, _gid);
             total += _amounts[i];
         }
