@@ -31,7 +31,6 @@ export default ({ gid, friends, saveFriends }) => {
   // Get an array of keys for accessing each friend
   useEffect(() => {
     if (numFriends) {
-      console.log("update in friends!!!!!!!!!!!!\n\n");
       for (let i = 0, FDKs = []; i < numFriends; i++) {
         FDKs.push(contract.methods["friendInGroup"].cacheCall(gid, i));
         setFriendDataKeys(FDKs);

@@ -55,35 +55,27 @@ export default ({drizzle, drizzleState, friends, gid}) => {
     let amountsTemp = [];
     for (let i = 0; i < friends.length; i++) {
       if (checkboxes[i] !== false && amounts[i] != 0) {
-        addresses.push(drizzle.web3.utils.toChecksumAddress(checkboxes[i]));
+        addresses.push(checkboxes[i]);
         amountsTemp.push(amounts[i]);
       }
     }
 
     try {
-      console.log("addreses sent to:", addresses);
       setStackId(drizzle.contracts.PaymentHub.methods["transaction"]
                   .cacheSend(addresses, amountsTemp, gid));
-      console.log("Before:", state);
     } catch (err) {
       setMessage("Transaction failure. Error: " + err);
     }
   };
 
   useEffect(() => {
-    console.log(stackId, state.transactionStack[stackId])
     if (stackId !== null && state.transactionStack[stackId]) {
       const txHash = state.transactionStack[stackId]
       if(state.transactions[txHash]) {
         setMessage(state.transactions[txHash].status)
-        if(message === "success") {
-          console.log("After:", state);
-        }
       }
     }
   }, [stackId, state.transactions]);
-
-  console.log(friends);
 
   const numChecked = () => checkboxes.filter(x => x !== false).length;
 
