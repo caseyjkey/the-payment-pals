@@ -3,16 +3,16 @@ import { DrizzleContext } from "@drizzle/react-plugin";
 import { Container, Row, Col } from "reactstrap";
 import Friend from './Friend.js';
 
-export default ({ gid }) => {
+export default ({ gid, friends, saveFriends }) => {
   const drizzleContext = useContext(DrizzleContext.Context);
 
   const [friendDataKeys, setFriendDataKeys] = useState([]);
   const [numFriendsDataKey, setNumFriendsDataKey] = useState(null);
   const [numFriends, setNumFriends] = useState(null);
-  const [friends, saveFriends] = useState([]);
 
   const ContractStore = drizzleContext.drizzleState.contracts.PaymentHub;
   const contract = drizzleContext.drizzle.contracts.PaymentHub;
+  const state = drizzleContext.drizzle.store.getState();
 
   // Set initial state
   useEffect(() => {
@@ -33,12 +33,13 @@ export default ({ gid }) => {
   // Get an array of keys for accessing each friend
   useEffect(() => {
     if (numFriends) {
+      console.log("update in friends!!!!!!!!!!!!\n\n");
       for (let i = 0, FDKs = []; i < numFriends; i++) {
         FDKs.push(contract.methods["friendInGroup"].cacheCall(gid, i));
         setFriendDataKeys(FDKs);
       }
     }
-  }, [numFriends]);
+  }, [numFriends, state.transactions]);
 
   // Add each friend to array of friends
   useEffect(() => {
