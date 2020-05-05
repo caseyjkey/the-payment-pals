@@ -62,7 +62,7 @@ export default ({drizzle, drizzleState, friends, gid}) => {
 
     try {
       setStackId(drizzle.contracts.PaymentHub.methods["transaction"]
-                  .cacheSend(addresses, amountsTemp, gid));
+                  .cacheSend(addresses, amountsTemp, gid, {gas: 140000}));
     } catch (err) {
       setMessage("Transaction failure. Error: " + err);
     }

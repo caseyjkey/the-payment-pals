@@ -1,7 +1,7 @@
 pragma experimental ABIEncoderV2;
 
 // Uncomment for console.log support
-// import "@nomiclabs/buidler/console.sol";
+import "@nomiclabs/buidler/console.sol";
 
 
 contract PaymentHub {
@@ -122,13 +122,19 @@ contract PaymentHub {
     // consider renaming to payForFriends a
     function transaction(address[] memory _payedFor, uint[] memory _amounts, uint _gid) public {
         uint total = 0;
+        Member memory member;
         for (uint i = 0; i < _payedFor.length; i++) {
-            Member memory member = userToMember[_payedFor[i]];
+            member = userToMember[_payedFor[i]];
             member.balance -= _amounts[i];
             updateMember(member, _gid);
             total += _amounts[i];
         }
-        userToMember[msg.sender].balance += total;
+        member = userToMember[msg.sender];
+        member.balance += total;
+        console.log("Total being added to sender's balance", total);
+        console.log("Sender:", member.name, member.balance);
+        bool result = updateMember(member, _gid);
+        console.log("Result of updating member", result);
     }
 
 }
