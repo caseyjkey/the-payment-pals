@@ -24,7 +24,10 @@ export default class AddFriend extends Component {
         });
         try{
             await this.props.drizzle.contracts.PaymentHub.methods["addFriend"]
-                .cacheSend({ name: this.state.name, balance: 0, addy: this.state.address }, this.props.groupId);
+                .cacheSend({ name: this.state.name, balance: 0, addy: this.state.address }, 
+                           this.props.groupId, 
+                           {gas: 140000}
+                           );
             this.setState({
                 loading: false,
                 message: "New friend added!"

@@ -17,7 +17,7 @@ contract PaymentHub {
 
     struct Member {
         string name;
-        uint balance;
+        int balance;
         address addy;
 		bool nameSet;
     }
@@ -120,8 +120,8 @@ contract PaymentHub {
 
 
     // consider renaming to payForFriends a
-    function transaction(address[] memory _payedFor, uint[] memory _amounts, uint _gid) public {
-        uint total = 0;
+    function transaction(address[] memory _payedFor, int[] memory _amounts, uint _gid) public {
+        int total = 0;
         Member memory member;
         for (uint i = 0; i < _payedFor.length; i++) {
             member = userToMember[_payedFor[i]];
@@ -131,10 +131,10 @@ contract PaymentHub {
         }
         member = userToMember[msg.sender];
         member.balance += total;
-        console.log("Total being added to sender's balance", total);
-        console.log("Sender:", member.name, member.balance);
+        //console.log("Total being added to sender's balance", total);
+        //console.log("Sender:", member.name, member.balance);
         bool result = updateMember(member, _gid);
-        console.log("Result of updating member", result);
+        //console.log("Result of updating member", result);
     }
 
 }

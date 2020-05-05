@@ -36,7 +36,7 @@ export default ({ gid, friends, saveFriends }) => {
         setFriendDataKeys(FDKs);
       }
     }
-  }, [numFriends, state.transactions]);
+  }, [numFriends]);
 
   // Add each friend to array of friends
   useEffect(() => {
@@ -51,7 +51,6 @@ export default ({ gid, friends, saveFriends }) => {
       saveFriends(friendsTemp);
     }
   }, [gid, ContractStore.friendInGroup, friendDataKeys])
-
 
   return (
     <div>
