@@ -1,0 +1,1423 @@
+{
+  "contractName": "ComplexStorage",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "groupArray",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "members",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "singleGroup",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "members",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "userToGroups",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "members",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"groupArray\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"members\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"singleGroup\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"members\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userToGroups\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"members\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/kc/Development/CS481A3/the-payment-pals/contracts/ComplexStorage.sol\":\"ComplexStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/kc/Development/CS481A3/the-payment-pals/contracts/ComplexStorage.sol\":{\"keccak256\":\"0xe400b38ba63f725e0adb60a98d5292ce945d66ccab532e8f8f075c4dc3ece7c4\",\"urls\":[\"bzz-raw://2e9b230f345a29589ac1aa656587f98ce0145eb766099ee5c9da30f678f1d255\",\"dweb:/ipfs/QmXK3R1PC6ArhTheuJNbGB1sVQtYU9KjX32YkFsNyjDUV6\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506000735ee68f3bfa0b2cc8b1bed1e457f6825466dd62219050600160405180604001604052806040518060400160405280600a81526020017f5061792050616c734023000000000000000000000000000000000000000000008152508152602001600460ff168152509080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000190805190602001906100c19291906101f7565b5060208201518160010160006101000a81548160ff021916908360ff160217905550505050600160405180604001604052806040518060400160405280600a81526020017f477265656e205465616d000000000000000000000000000000000000000000008152508152602001600960ff1681525090806001815401808255809150509060018203906000526020600020906002020160009091929091909150600082015181600001908051906020019061017d9291906101f7565b5060208201518160010160006101000a81548160ff021916908360ff16021790555050505060016000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000209080546101f0929190610277565b505061045c565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061023857805160ff1916838001178555610266565b82800160010185558215610266579182015b8281111561026557825182559160200191906001019061024a565b5b5090506102739190610325565b5090565b8280548282559060005260206000209060020281019282156103145760005260206000209160020282015b82811115610313578282600082018160000190805460018160011615610100020316600290046102d392919061034a565b506001820160009054906101000a900460ff168160010160006101000a81548160ff021916908360ff1602179055505050916002019190600201906102a2565b5b50905061032191906103d1565b5090565b61034791905b8082111561034357600081600090555060010161032b565b5090565b90565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061038357805485556103c0565b828001600101855582156103c057600052602060002091601f016020900482015b828111156103bf5782548255916001019190600101906103a4565b5b5090506103cd9190610325565b5090565b61041191905b8082111561040d57600080820160006103f09190610414565b6001820160006101000a81549060ff0219169055506002016103d7565b5090565b90565b50805460018160011615610100020316600290046000825580601f1061043a5750610459565b601f0160209004906000526020600020908101906104589190610325565b5b50565b6105038061046b6000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806398cc49151461004657806398cf490d146100fa578063f698b7cc1461018a575b600080fd5b6100726004803603602081101561005c57600080fd5b810190808035906020019092919050505061025e565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b838110156100be5780820151818401526020810190506100a3565b50505050905090810190601f1680156100eb5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b610102610334565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b8381101561014e578082015181840152602081019050610133565b50505050905090810190601f16801561017b5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6101d6600480360360408110156101a057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506103eb565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b83811015610222578082015181840152602081019050610207565b50505050905090810190601f16801561024f5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6001818154811061026b57fe5b9060005260206000209060020201600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103175780601f106102ec57610100808354040283529160200191610317565b820191906000526020600020905b8154815290600101906020018083116102fa57829003601f168201915b5050505050908060010160009054906101000a900460ff16905082565b6002806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103ce5780601f106103a3576101008083540402835291602001916103ce565b820191906000526020600020905b8154815290600101906020018083116103b157829003601f168201915b5050505050908060010160009054906101000a900460ff16905082565b6000602052816000526040600020818154811061040457fe5b906000526020600020906002020160009150915050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104b15780601f10610486576101008083540402835291602001916104b1565b820191906000526020600020905b81548152906001019060200180831161049457829003601f168201915b5050505050908060010160009054906101000a900460ff1690508256fea265627a7a723158209d6fb4e2973a27fd3578341f21df4f0f4cc08b84c9ef72829ae0820b28c0ee8d64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c806398cc49151461004657806398cf490d146100fa578063f698b7cc1461018a575b600080fd5b6100726004803603602081101561005c57600080fd5b810190808035906020019092919050505061025e565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b838110156100be5780820151818401526020810190506100a3565b50505050905090810190601f1680156100eb5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b610102610334565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b8381101561014e578082015181840152602081019050610133565b50505050905090810190601f16801561017b5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6101d6600480360360408110156101a057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506103eb565b60405180806020018360ff1660ff168152602001828103825284818151815260200191508051906020019080838360005b83811015610222578082015181840152602081019050610207565b50505050905090810190601f16801561024f5780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6001818154811061026b57fe5b9060005260206000209060020201600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103175780601f106102ec57610100808354040283529160200191610317565b820191906000526020600020905b8154815290600101906020018083116102fa57829003601f168201915b5050505050908060010160009054906101000a900460ff16905082565b6002806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103ce5780601f106103a3576101008083540402835291602001916103ce565b820191906000526020600020905b8154815290600101906020018083116103b157829003601f168201915b5050505050908060010160009054906101000a900460ff16905082565b6000602052816000526040600020818154811061040457fe5b906000526020600020906002020160009150915050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104b15780601f10610486576101008083540402835291602001916104b1565b820191906000526020600020905b81548152906001019060200180831161049457829003601f168201915b5050505050908060010160009054906101000a900460ff1690508256fea265627a7a723158209d6fb4e2973a27fd3578341f21df4f0f4cc08b84c9ef72829ae0820b28c0ee8d64736f6c63430005100032",
+  "sourceMap": "34:471:0:-;;;251:252;8:9:-1;5:2;;;30:1;27;20:12;5:2;251:252:0;282:16;301:42;282:61;;354:10;370:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;390:1;370:22;;;;;354:39;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;354:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;403:10;419:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;439:1;419:22;;;;;403:39;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;403:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;486:10;461:12;:22;474:8;461:22;;;;;;;;;;;;;;;:35;;;;;;;;:::i;:::-;;251:252;34:471;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "34:471:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:471:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;119:25;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;119:25:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;119:25:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;150:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;150:24:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;64:48;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;64:48:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;64:48:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;119:25;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;150:24::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;64:48::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.4.21 <0.7.0;\n\ncontract ComplexStorage {\n    mapping (address => Group[]) public userToGroups;\n\n    Group[] public groupArray;\n    Group public singleGroup;\n\n    struct Group {\n        string name;\n        uint8 members;\n    }\n\n    constructor() public {\n        address address1 = 0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221;\n\n        groupArray.push(Group(\"Pay Pals@#\", 4));\n        groupArray.push(Group(\"Green Team\", 9));\n        \n        userToGroups[address1] = groupArray;\n    }\n}\n",
+  "sourcePath": "/home/kc/Development/CS481A3/the-payment-pals/contracts/ComplexStorage.sol",
+  "ast": {
+    "absolutePath": "/home/kc/Development/CS481A3/the-payment-pals/contracts/ComplexStorage.sol",
+    "exportedSymbols": {
+      "ComplexStorage": [
+        49
+      ]
+    },
+    "id": 50,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 49,
+        "linearizedBaseContracts": [
+          49
+        ],
+        "name": "ComplexStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 6,
+            "name": "userToGroups",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "64:48:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+              "typeString": "mapping(address => struct ComplexStorage.Group[])"
+            },
+            "typeName": {
+              "id": 5,
+              "keyType": {
+                "id": 2,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "73:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "64:28:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+                "typeString": "mapping(address => struct ComplexStorage.Group[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 3,
+                  "name": "Group",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 16,
+                  "src": "84:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                    "typeString": "struct ComplexStorage.Group"
+                  }
+                },
+                "id": 4,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "84:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage_ptr",
+                  "typeString": "struct ComplexStorage.Group[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 9,
+            "name": "groupArray",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "119:25:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+              "typeString": "struct ComplexStorage.Group[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 7,
+                "name": "Group",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 16,
+                "src": "119:5:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                  "typeString": "struct ComplexStorage.Group"
+                }
+              },
+              "id": 8,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "119:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage_ptr",
+                "typeString": "struct ComplexStorage.Group[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "singleGroup",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "150:24:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Group_$16_storage",
+              "typeString": "struct ComplexStorage.Group"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 10,
+              "name": "Group",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 16,
+              "src": "150:5:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                "typeString": "struct ComplexStorage.Group"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ComplexStorage.Group",
+            "id": 16,
+            "members": [
+              {
+                "constant": false,
+                "id": 13,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "204:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 12,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "204:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15,
+                "name": "members",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "225:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 14,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "225:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Group",
+            "nodeType": "StructDefinition",
+            "scope": 49,
+            "src": "181:64:0",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 47,
+              "nodeType": "Block",
+              "src": "272:231:0",
+              "statements": [
+                {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "address1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 47,
+                      "src": "282:16:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 19,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "282:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 22,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "hexValue": "307835454536384633424661306232636338623162454431653435374636383235343636646436323231",
+                    "id": 21,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "301:42:0",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    },
+                    "value": "0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "282:61:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "5061792050616c734023",
+                            "id": 27,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "376:12:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_f7e71930d18eb37559fee6506cb6752a76d40fa4788cd10f0f8f92515a80cb7f",
+                              "typeString": "literal_string \"Pay Pals@#\""
+                            },
+                            "value": "Pay Pals@#"
+                          },
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "34",
+                            "id": 28,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "390:1:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_4_by_1",
+                              "typeString": "int_const 4"
+                            },
+                            "value": "4"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_f7e71930d18eb37559fee6506cb6752a76d40fa4788cd10f0f8f92515a80cb7f",
+                              "typeString": "literal_string \"Pay Pals@#\""
+                            },
+                            {
+                              "typeIdentifier": "t_rational_4_by_1",
+                              "typeString": "int_const 4"
+                            }
+                          ],
+                          "id": 26,
+                          "name": "Group",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "370:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_struct$_Group_$16_storage_ptr_$",
+                            "typeString": "type(struct ComplexStorage.Group storage pointer)"
+                          }
+                        },
+                        "id": 29,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "structConstructorCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "370:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 23,
+                        "name": "groupArray",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9,
+                        "src": "354:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                          "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                        }
+                      },
+                      "id": 25,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "354:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Group_$16_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ComplexStorage.Group storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "354:39:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 31,
+                  "nodeType": "ExpressionStatement",
+                  "src": "354:39:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "477265656e205465616d",
+                            "id": 36,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "425:12:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_318d58f30ebed3eca5194d0d64842b9f3ddfb62f9fa28f7f9a2481dbf68691c0",
+                              "typeString": "literal_string \"Green Team\""
+                            },
+                            "value": "Green Team"
+                          },
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "39",
+                            "id": 37,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "439:1:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_9_by_1",
+                              "typeString": "int_const 9"
+                            },
+                            "value": "9"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_318d58f30ebed3eca5194d0d64842b9f3ddfb62f9fa28f7f9a2481dbf68691c0",
+                              "typeString": "literal_string \"Green Team\""
+                            },
+                            {
+                              "typeIdentifier": "t_rational_9_by_1",
+                              "typeString": "int_const 9"
+                            }
+                          ],
+                          "id": 35,
+                          "name": "Group",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "419:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_struct$_Group_$16_storage_ptr_$",
+                            "typeString": "type(struct ComplexStorage.Group storage pointer)"
+                          }
+                        },
+                        "id": 38,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "structConstructorCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "419:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 32,
+                        "name": "groupArray",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9,
+                        "src": "403:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                          "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                        }
+                      },
+                      "id": 34,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "403:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Group_$16_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ComplexStorage.Group storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 39,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "403:39:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 40,
+                  "nodeType": "ExpressionStatement",
+                  "src": "403:39:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 45,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 41,
+                        "name": "userToGroups",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6,
+                        "src": "461:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+                          "typeString": "mapping(address => struct ComplexStorage.Group storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 43,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 42,
+                        "name": "address1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "474:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "461:22:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                        "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 44,
+                      "name": "groupArray",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9,
+                      "src": "486:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                        "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                      }
+                    },
+                    "src": "461:35:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                      "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                    }
+                  },
+                  "id": 46,
+                  "nodeType": "ExpressionStatement",
+                  "src": "461:35:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 48,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:0"
+            },
+            "returnParameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "272:0:0"
+            },
+            "scope": 49,
+            "src": "251:252:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 50,
+        "src": "34:471:0"
+      }
+    ],
+    "src": "0:506:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/kc/Development/CS481A3/the-payment-pals/contracts/ComplexStorage.sol",
+    "exportedSymbols": {
+      "ComplexStorage": [
+        49
+      ]
+    },
+    "id": 50,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 49,
+        "linearizedBaseContracts": [
+          49
+        ],
+        "name": "ComplexStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 6,
+            "name": "userToGroups",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "64:48:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+              "typeString": "mapping(address => struct ComplexStorage.Group[])"
+            },
+            "typeName": {
+              "id": 5,
+              "keyType": {
+                "id": 2,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "73:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "64:28:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+                "typeString": "mapping(address => struct ComplexStorage.Group[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 3,
+                  "name": "Group",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 16,
+                  "src": "84:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                    "typeString": "struct ComplexStorage.Group"
+                  }
+                },
+                "id": 4,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "84:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage_ptr",
+                  "typeString": "struct ComplexStorage.Group[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 9,
+            "name": "groupArray",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "119:25:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+              "typeString": "struct ComplexStorage.Group[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 7,
+                "name": "Group",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 16,
+                "src": "119:5:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                  "typeString": "struct ComplexStorage.Group"
+                }
+              },
+              "id": 8,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "119:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage_ptr",
+                "typeString": "struct ComplexStorage.Group[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "singleGroup",
+            "nodeType": "VariableDeclaration",
+            "scope": 49,
+            "src": "150:24:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Group_$16_storage",
+              "typeString": "struct ComplexStorage.Group"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 10,
+              "name": "Group",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 16,
+              "src": "150:5:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Group_$16_storage_ptr",
+                "typeString": "struct ComplexStorage.Group"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ComplexStorage.Group",
+            "id": 16,
+            "members": [
+              {
+                "constant": false,
+                "id": 13,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "204:11:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 12,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "204:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15,
+                "name": "members",
+                "nodeType": "VariableDeclaration",
+                "scope": 16,
+                "src": "225:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 14,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "225:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Group",
+            "nodeType": "StructDefinition",
+            "scope": 49,
+            "src": "181:64:0",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 47,
+              "nodeType": "Block",
+              "src": "272:231:0",
+              "statements": [
+                {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "address1",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 47,
+                      "src": "282:16:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 19,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "282:7:0",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 22,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "hexValue": "307835454536384633424661306232636338623162454431653435374636383235343636646436323231",
+                    "id": 21,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "301:42:0",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    },
+                    "value": "0x5EE68F3BFa0b2cc8b1bED1e457F6825466dd6221"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "282:61:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "5061792050616c734023",
+                            "id": 27,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "376:12:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_f7e71930d18eb37559fee6506cb6752a76d40fa4788cd10f0f8f92515a80cb7f",
+                              "typeString": "literal_string \"Pay Pals@#\""
+                            },
+                            "value": "Pay Pals@#"
+                          },
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "34",
+                            "id": 28,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "390:1:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_4_by_1",
+                              "typeString": "int_const 4"
+                            },
+                            "value": "4"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_f7e71930d18eb37559fee6506cb6752a76d40fa4788cd10f0f8f92515a80cb7f",
+                              "typeString": "literal_string \"Pay Pals@#\""
+                            },
+                            {
+                              "typeIdentifier": "t_rational_4_by_1",
+                              "typeString": "int_const 4"
+                            }
+                          ],
+                          "id": 26,
+                          "name": "Group",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "370:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_struct$_Group_$16_storage_ptr_$",
+                            "typeString": "type(struct ComplexStorage.Group storage pointer)"
+                          }
+                        },
+                        "id": 29,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "structConstructorCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "370:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 23,
+                        "name": "groupArray",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9,
+                        "src": "354:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                          "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                        }
+                      },
+                      "id": 25,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "354:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Group_$16_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ComplexStorage.Group storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "354:39:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 31,
+                  "nodeType": "ExpressionStatement",
+                  "src": "354:39:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "477265656e205465616d",
+                            "id": 36,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "string",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "425:12:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_stringliteral_318d58f30ebed3eca5194d0d64842b9f3ddfb62f9fa28f7f9a2481dbf68691c0",
+                              "typeString": "literal_string \"Green Team\""
+                            },
+                            "value": "Green Team"
+                          },
+                          {
+                            "argumentTypes": null,
+                            "hexValue": "39",
+                            "id": 37,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "439:1:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_9_by_1",
+                              "typeString": "int_const 9"
+                            },
+                            "value": "9"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_stringliteral_318d58f30ebed3eca5194d0d64842b9f3ddfb62f9fa28f7f9a2481dbf68691c0",
+                              "typeString": "literal_string \"Green Team\""
+                            },
+                            {
+                              "typeIdentifier": "t_rational_9_by_1",
+                              "typeString": "int_const 9"
+                            }
+                          ],
+                          "id": 35,
+                          "name": "Group",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "419:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_struct$_Group_$16_storage_ptr_$",
+                            "typeString": "type(struct ComplexStorage.Group storage pointer)"
+                          }
+                        },
+                        "id": 38,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "structConstructorCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "419:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Group_$16_memory",
+                          "typeString": "struct ComplexStorage.Group memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 32,
+                        "name": "groupArray",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9,
+                        "src": "403:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                          "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                        }
+                      },
+                      "id": 34,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "403:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Group_$16_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ComplexStorage.Group storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 39,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "403:39:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 40,
+                  "nodeType": "ExpressionStatement",
+                  "src": "403:39:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 45,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 41,
+                        "name": "userToGroups",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6,
+                        "src": "461:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Group_$16_storage_$dyn_storage_$",
+                          "typeString": "mapping(address => struct ComplexStorage.Group storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 43,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 42,
+                        "name": "address1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "474:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "461:22:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                        "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 44,
+                      "name": "groupArray",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9,
+                      "src": "486:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                        "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                      }
+                    },
+                    "src": "461:35:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Group_$16_storage_$dyn_storage",
+                      "typeString": "struct ComplexStorage.Group storage ref[] storage ref"
+                    }
+                  },
+                  "id": 46,
+                  "nodeType": "ExpressionStatement",
+                  "src": "461:35:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 48,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:0"
+            },
+            "returnParameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "272:0:0"
+            },
+            "scope": 49,
+            "src": "251:252:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 50,
+        "src": "34:471:0"
+      }
+    ],
+    "src": "0:506:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.22",
+  "updatedAt": "2020-05-03T23:18:37.959Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

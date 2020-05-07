@@ -33,7 +33,7 @@ export default ({ drizzle, drizzleState }) => {
                             drizzle={drizzle}
                             drizzleState={drizzleState}
                             friends={friends}
-                        />       
+                        />      
                     </Col>
                     <Col>
                         <AddFriend drizzle={drizzle} groupId={groupID}/>

@@ -20,12 +20,12 @@ const App = () => {
           if (!initialized) {
             return "Loading..."
           }
-
-            return (
-                <div>
-                    <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
-                    <WelcomeModal drizzle={drizzle} drizzleState={drizzleState} />
-              </div>
+          
+          return (
+              <div>
+                  <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
+                  <WelcomeModal drizzle={drizzle} drizzleState={drizzleState} />
+            </div>
           )
         }}
       </DrizzleContext.Consumer>
