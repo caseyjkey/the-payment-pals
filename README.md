@@ -17,17 +17,8 @@ Web3.js v1.2.1
 
 ### Shared Ethereum Wallet
 For this project we will be testing on Rinkeby.
-We can all import this account and use it for any transactions. 
-This account has a couple Ether too.
+We load the secrets via files called `.mnemonic` and `.infura`. Contact Casey for these.
 
-Here is the private key:
-`7F24F4AE7841AEA37CB090508227CA6B0B8BFA0F88DB220E9609302D459B977A`
-
-Import it by:
-1. Click Metamask
-2. Select Rinkeby Test Network
-3. Click the user account circle in top-right of Metamask
-4. Click import account and paste private key from above
 
 ## Getting Started
 0. Install node modules, i.e. OpenZeppelin
@@ -64,3 +55,25 @@ npm run test
 // ensure you are inside the app directory when running this
 npm run build
 ```
+
+## Solidity `console.log` using Buidler
+To have console.log, follow these steps:
+1. From root directory, run `npx buidler node`
+2. In seperate terminal, run `npx buidler run deploy.js --network localhost` to compile contracts, take note of the deployed contract address.
+3. Copy the artifact `PaymentHub.json` from `/artifacts`to `/app/arc/contracts`
+4. Append this `networks` key to the bottom of the artifact json object:
+```
+  "networks": {
+    "31337": {
+      "events": {},
+      "links": {},
+      "address": "0xa4bcDF64Cdd5451b6ac3743B414124A6299B65FF",
+      "transactionHash": "0x320692bd72b17af0be036b5d59fe799be3a7ce336a1a2e3d3de72fa51db0d146"
+    }
+  }
+  ```
+  5. Run `npm run start` in `app` directory.
+  
+  The dApp will now be available and `console.log`s within PaymentHub will be visible in the console running the buidler node!
+
+
