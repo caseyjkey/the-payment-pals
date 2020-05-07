@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-export default ({drizzle, drizzleState, friends}) => {
+export default ({drizzle, drizzleState, friends, gid}) => {
   const [modal, setModal] = useState(false);
   const [message, setMessage] = useState(null);
   const [checkboxes, setCheckboxes] = useState([]) 
@@ -62,7 +62,7 @@ export default ({drizzle, drizzleState, friends}) => {
 
     try {
       setStackId(drizzle.contracts.PaymentHub.methods["transaction"]
-                  .cacheSend(addresses, amountsTemp));
+                  .cacheSend(addresses, amountsTemp, gid, {gas: 145000}));
     } catch (err) {
       setMessage("Transaction failure. Error: " + err);
     }
@@ -76,8 +76,6 @@ export default ({drizzle, drizzleState, friends}) => {
       }
     }
   }, [stackId, state.transactions]);
-
-
 
   const numChecked = () => checkboxes.filter(x => x !== false).length;
 

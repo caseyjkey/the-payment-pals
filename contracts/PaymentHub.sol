@@ -1,5 +1,9 @@
 pragma experimental ABIEncoderV2;
 
+// Uncomment for console.log support
+// import "@nomiclabs/buidler/console.sol";
+
+
 contract PaymentHub {
 
     // Mapping for finding a user's groups
@@ -52,7 +56,7 @@ contract PaymentHub {
         groups.length++;
         Group storage group = groups[groups.length - 1];
 		
-        Member memory member = Member(_groupOwnerName, 0, msg.sender, false);
+        Member memory member = Member(_groupOwnerName, 0, msg.sender, true);
 		userToMember[msg.sender] = member;
         group.friends.push(member); // Add the first member, which is the creator
 
@@ -85,6 +89,7 @@ contract PaymentHub {
 
     function addFriend(Member memory _newFriend, uint _groupID) public {
         groups[_groupID].friends.push(_newFriend);
+        userToMember[_newFriend.addy] = _newFriend;
     }
 
     function payFriend(address payable  _friend) external payable {
@@ -102,15 +107,34 @@ contract PaymentHub {
 		return member.nameSet;
 	}
 
+    function updateMember(Member memory member, uint _gid) internal returns (bool) {
+        for (uint i = 0; i < groups[_gid].friends.length; i++) {
+            if(groups[_gid].friends[i].addy == member.addy) {
+                groups[_gid].friends[i] = member;
+                userToMember[member.addy] = member;
+                return true;
+            }
+        }
+        return false;
+    }
 
-    // consider renaming to payForFriends ok
-    function transaction(address[] memory _payedFor, int[] memory _amounts) public {
+
+    // consider renaming to payForFriends a
+    function transaction(address[] memory _payedFor, int[] memory _amounts, uint _gid) public {
         int total = 0;
+        Member memory member;
         for (uint i = 0; i < _payedFor.length; i++) {
-            userToBalance[_payedFor[i]] -= _amounts[i];
+            member = userToMember[_payedFor[i]];
+            member.balance -= _amounts[i];
+            updateMember(member, _gid);
             total += _amounts[i];
         }
-        userToBalance[msg.sender] += total;
+        member = userToMember[msg.sender];
+        member.balance += total;
+        //console.log("Total being added to sender's balance", total);
+        //console.log("Sender:", member.name, member.balance);
+        bool result = updateMember(member, _gid);
+        //console.log("Result of updating member", result);
     }
 
 }
