@@ -17,16 +17,8 @@ Web3.js v1.2.1
 
 ### Shared Ethereum Wallet
 For this project we will be testing on Rinkeby.
-We can all import this account and use it for any transactions. 
-This account has a couple Ether too.
+We load the secrets via files called `.mnemonic` and `.infura`. Contact Casey for these.
 
-Contact Casey for private key.
-
-Import it by:
-1. Click Metamask
-2. Select Rinkeby Test Network
-3. Click the user account circle in top-right of Metamask
-4. Click import account and paste private key from above
 
 ## Getting Started
 0. Install node modules, i.e. OpenZeppelin

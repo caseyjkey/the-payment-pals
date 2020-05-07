@@ -54,7 +54,6 @@ export default ({gid, setGID}) => {
         if (group) {
           group = group.value;
           groupsTemp[group.id] = group
-          //groupsTemp.push(ContractStore.userToGroups[groupDataKey].value);
         } 
       }
     }
