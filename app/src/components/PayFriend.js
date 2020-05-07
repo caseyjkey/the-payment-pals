@@ -38,14 +38,10 @@ export default ({drizzle, drizzleState, friends, gid}) => {
   };
 
   useEffect(() => {
-    console.log(stackId, state.transactionStack[stackId])
     if (stackId !== null && state.transactionStack[stackId]) {
       const txHash = state.transactionStack[stackId]
       if(state.transactions[txHash]) {
         setMessage(state.transactions[txHash].status)
-        if(message === "success") {
-          console.log("After:", state);
-        }
       }
     }
   }, [stackId, state.transactions]);
