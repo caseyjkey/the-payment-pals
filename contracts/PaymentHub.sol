@@ -1,7 +1,7 @@
 pragma experimental ABIEncoderV2;
 
 // Uncomment for console.log support
-import "@nomiclabs/buidler/console.sol";
+// import "@nomiclabs/buidler/console.sol";
 
 
 contract PaymentHub {

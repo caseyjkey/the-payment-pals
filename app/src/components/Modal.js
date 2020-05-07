@@ -51,22 +51,20 @@ const WelcomeModal = ({ drizzle, drizzleState }) => {
                 <ModalHeader toggle={toggle}>Welcome To PaymentPals</ModalHeader>
                 <ModalBody>
                     <p><b>Please update your name.</b></p>
-                    <p>
-                        <strong>Name on file: </strong>
-                        <ContractData
-                            drizzle={drizzle}
-                            drizzleState={drizzleState}
-                            contract="PaymentHub"
-                            method="getName"
-                        />
-                        <ContractForm
-                            drizzle={drizzle}
-                            drizzleState={drizzleState}
-                            contract="PaymentHub"
-                            method="setName"
-                            labels={['Enter your name']}
-                        />
-                    </p>
+                    <strong>Name on file: </strong>
+                    <ContractData
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="PaymentHub"
+                        method="getName"
+                    />
+                    <ContractForm
+                        drizzle={drizzle}
+                        drizzleState={drizzleState}
+                        contract="PaymentHub"
+                        method="setName"
+                        labels={['Enter your name']}
+                    />
                     <p>It looks like you are not a part of a group yet. <br />
                         Would you like to join or create a group?</p>
             </ModalBody>
