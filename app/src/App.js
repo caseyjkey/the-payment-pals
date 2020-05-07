@@ -24,6 +24,7 @@ const App = () => {
           return (
               <div>
                   <PaymentPals drizzle={drizzle} drizzleState={drizzleState} />
+                  <WelcomeModal drizzle={drizzle} drizzleState={drizzleState} />
             </div>
           )
         }}
