@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation.js";
 import AddFriend from "./components/AddFriend.js";
 import Friends from "./components/Friends.js";
 import PayForFriend from "./components/PayForFriend.js";
+import PayFriend from "./components/PayFriend.js";
 
 export default ({ drizzle, drizzleState }) => {
     // destructure drizzle and drizzleState from props
@@ -37,6 +38,14 @@ export default ({ drizzle, drizzleState }) => {
                     </Col>
                     <Col>
                         <AddFriend drizzle={drizzle} groupId={groupID}/>
+                    </Col>
+                    <Col>
+                        <PayFriend 
+                            drizzle={drizzle} 
+                            drizzleState={drizzleState}
+                            friends={friends}
+                            gid={groupID}
+                        />
                     </Col>
                 </Row>
             </Container>

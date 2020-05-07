@@ -87,10 +87,15 @@ contract PaymentHub {
         groups[_groupID].friends.push(_newFriend);
     }
 
-    function payFriend(address payable  _friend) external payable {
+    function payFriend(address payable _friend, uint _gid) external payable {
         _friend.transfer(msg.value);
-        userToBalance[msg.sender] -= int(msg.value/1000000000000000000);
-        userToBalance[_friend] += int(msg.value/1000000000000000000);
+        Member memory member = userToMember[msg.sender];
+        member.balance -= int(msg.value/1000000000000000000);
+        updateMember(member, _gid);
+
+        member = userToMember[_friend];
+        member.balance += int(msg.value/1000000000000000000);
+        updateMember(member, _gid);
     }
 
     function getNumUserGroups(address _add) public view returns (uint){
@@ -102,6 +107,16 @@ contract PaymentHub {
 		return member.nameSet;
 	}
 
+    function updateMember(Member memory member, uint _gid) internal returns (bool) {
+        for (uint i = 0; i < groups[_gid].friends.length; i++) {
+            if(groups[_gid].friends[i].addy == member.addy) {
+                groups[_gid].friends[i] = member;
+                userToMember[member.addy] = member;
+                return true;
+            }
+        }
+        return false;
+    }
 
     // consider renaming to payForFriends
     function transaction(address[] memory _payedFor, int[] memory _amounts) public {
