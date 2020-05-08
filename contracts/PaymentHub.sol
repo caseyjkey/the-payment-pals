@@ -1,7 +1,7 @@
 pragma experimental ABIEncoderV2;
 
 // Uncomment for console.log support
-// import "@nomiclabs/buidler/console.sol";
+import "@nomiclabs/buidler/console.sol";
 
 
 contract PaymentHub {
@@ -93,14 +93,18 @@ contract PaymentHub {
     }
 
     function payFriend(address payable _friend, uint _gid) external payable {
+        console.log("msg value", msg.value);
         _friend.transfer(msg.value);
+        int256 paymentEthers = int256(msg.value/1000000000000000000);
         Member memory member = userToMember[msg.sender];
-        member.balance -= int(msg.value/1000000000000000000);
+        member.balance -= paymentEthers;
         updateMember(member, _gid);
+        //console.log(member.balance);
 
         member = userToMember[_friend];
-        member.balance += int(msg.value/1000000000000000000);
+        member.balance += paymentEthers;
         updateMember(member, _gid);
+        //console.log(member.balance);
     }
 
     function getNumUserGroups(address _add) public view returns (uint){
@@ -117,6 +121,7 @@ contract PaymentHub {
             if(groups[_gid].friends[i].addy == member.addy) {
                 groups[_gid].friends[i] = member;
                 userToMember[member.addy] = member;
+                console.log("yo");
                 return true;
             }
         }

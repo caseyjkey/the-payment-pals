@@ -13,25 +13,34 @@ export default ({drizzle, drizzleState, friends, gid}) => {
   // Reset state on modal toggle
   useEffect(() => {
     if (friends[0]) {
-      setSelectedFriend(friends[0].addy);
+      //setSelectedFriend(friends[0].addy);
     }
     if (!modal) {
       setMessage(null);
     }
   }, [modal, friends]);
 
-  const toggleModal = () => setModal(!modal);
+  const toggleModal = () => {
+    setSelectedFriend(null);
+    setModal(!modal);
+  }
   
   const onClick = (event) => {
     let addy = event.target.value;
-    setSelectedFriend(addy);
+    console.log("Clicked ", addy);
+    setSelectedFriend(addy ? addy : null);
   };
 
   const onSubmit = async (event) => {
+    event.preventDefault();
     let weiValue = drizzle.web3.utils.toWei(total.toString(), 'ether');
+    console.log(weiValue, "wei or ", total, "ether to ", selectedFriend);
     try {
       setStackId(drizzle.contracts.PaymentHub.methods["payFriend"]
-                  .cacheSend(selectedFriend, gid), {value: weiValue});
+                  .cacheSend(selectedFriend, gid, {from: drizzleState.accounts[0], 
+                                                    value: weiValue,
+                                                    to: selectedFriend}));
+      
     } catch (err) {
       setMessage("Transaction failure. Error: " + err);
     }
@@ -51,7 +60,7 @@ export default ({drizzle, drizzleState, friends, gid}) => {
     <div>
         <Button color="primary" onClick={toggleModal}>Pay Friend</Button>
         <Modal isOpen={modal} toggle={toggleModal}>
-          <ModalHeader>Pay for Friends</ModalHeader>
+          <ModalHeader>Pay Friend</ModalHeader>
           <ModalBody>
             <form onSubmit={onSubmit}>
               <label htmlFor="total" className="mr-2">Amount to pay friend:</label>
@@ -63,12 +72,16 @@ export default ({drizzle, drizzleState, friends, gid}) => {
               />
               Ether
             </form>
-            <label htmlFor="friends">Choose a friend:</label>
-            <select id="friends" name="friendlist" form="friendform">
+            <label htmlFor="friends" className="mr-2">Friend:</label>
+            <select id="friends" 
+                    name="friendlist" 
+                    form="friendform"
+                    onClick={onClick}
+            >
+              <option value="" selected disabled hidden>Choose a friend</option>
             {friends && friends.map((friend, index) => { 
               return (
                 <option value={friend.addy} 
-                        onClick={onClick}
                         key={index}
                 >
                   {friend.name}
@@ -82,6 +95,7 @@ export default ({drizzle, drizzleState, friends, gid}) => {
             <Button type="submit" 
                     onClick={onSubmit}
                     color="primary"
+                    disabled={(selectedFriend === null)}
             >
               Submit
             </Button>
