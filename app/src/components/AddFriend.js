@@ -23,6 +23,7 @@ export default class AddFriend extends Component {
             message: "Waiting for blockchain transaction to complete..."
         });
         try{
+            // Change this to use stackId so it updates to show processing
             await this.props.drizzle.contracts.PaymentHub.methods["addFriend"]
                 .cacheSend({ name: this.state.name, balance: 0, addy: this.state.address }, 
                            this.props.groupId, 
